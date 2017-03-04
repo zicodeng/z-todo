@@ -2,7 +2,7 @@
   "name": "z-todo",
   "version": "1.0.0",
   "description": "Personal Node.js project",
-  "main": "app.js",
+  "main": "server.js",
   "engines": {
     "node": "6.9.4"
   },
