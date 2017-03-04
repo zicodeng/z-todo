@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Z TO-DO</title>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/style.css">
+
+</head>
+<body>
+    <main>
+        <h1>Z TO-DO</h1>
+        <form class="add-item-form">
+            <input type="text" name="item" value="" placeholder="Add new item" required>
+            <button type="submit" name="button">ADD ITEM</button>
+        </form>
+        <ul>
+            <% for(var i = 0; i < toDoList.length; i ++) { %>
+                <li class="to-do-item"><%= toDoList[i].item %></li>
+            <% } %>
+        </ul>
+    </main>
+
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Main JavaScript -->
+    <script type="text/javascript" src="/assets/z-todo.js"></script>
+</body>
+</html>
