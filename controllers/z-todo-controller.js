@@ -18,7 +18,7 @@ var zTodoModel = mongoose.model("z-todo", zTodoSchema);
 
 module.exports = function(app) {
 	// Get data from MongoDB and pass it to the view
-	app.get("/", function(request, response) {
+	app.get("/z-todo", function(request, response) {
 
 		// Find method can find all items or particular items in that collection
 		// If an empty object is passed as parameter, it will retrieve all the items in that collection
