@@ -8,7 +8,7 @@
   },
   "homepage": "https://github.com/zicodeng/z-todo",
   "dependencies": {
-    "babel-core": "^6.23.1",
+    "babel-core": "^6.4.5",
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
