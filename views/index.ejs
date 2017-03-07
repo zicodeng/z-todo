@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Z-TODO</title>
+<!-- Include global header -->
+<% include partials/header.ejs %>
 
-	<!-- Style CSS -->
-    <link rel="stylesheet" type="text/css" href="/assets/style.css">
-</head>
 <body>
-	<h1>Hi! Welcome to my Z-TODO app</h1>
+	<main class="home-page">
+		<section class="app-title">
+			<h1>Z</h1>
+			<h2>TODO</h2>
+		</section>
+		<section class="log-in">
+			<form class="material-design">
+				<h1>LOG IN</h1>
+				<input placeholder="Username" type="text" required="" />
+				<input placeholder="Password" type="password" required="" />
+				<button>SUBMIT</button>
+			</form>
+			<footer>Created with <span></span> by Zico Deng</footer>
+		</section>
+	</main>
 
-</body>
-</html>
+<!-- Include global footer -->
+<% include partials/footer.ejs %>

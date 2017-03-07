@@ -1,0 +1,25 @@
+{
+  "name": "z-todo",
+  "description": "Personal todo app",
+  "main": "server.js",
+  "authors": [
+    "Zico Deng"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/zicodeng/z-todo",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "ubuntu": "https://google-fonts.azurewebsites.net/googleFonts/ubuntu?family=Ubuntu",
+    "roboto": "https://google-fonts.azurewebsites.net/googleFonts/roboto?family=Roboto",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}

@@ -1,7 +1,11 @@
 body {
-    background: skyblue;
-    color: #fff;
+    background: orange;
+    color: black;
     padding: 30px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1 {
@@ -14,4 +18,30 @@ h1 {
 p {
     font-size: 16px;
     text-align: center;
+}
+
+.add-item-form {
+	max-width: 450px;
+	margin: 0 auto;
+}
+
+.add-item-form input {
+	width: 100%;
+	border: 0;
+	padding: 20px;
+	background: #eee;
+}
+
+.add-item-form input:focus {
+	outline: none;
+	background: white;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+.add-item-form button {
+	width: 100%;
 }

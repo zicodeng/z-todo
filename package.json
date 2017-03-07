@@ -1,22 +1,30 @@
 {
   "name": "z-todo",
   "version": "1.0.0",
-  "description": "Personal Node.js project",
+  "description": "Personal todo app",
   "main": "server.js",
   "engines": {
     "node": "6.9.4"
   },
   "homepage": "https://github.com/zicodeng/z-todo",
   "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
     "body-parser": "^1.17.0",
     "ejs": "^2.5.6",
     "express": "^4.15.0",
-    "mongoose": "^4.8.5"
+    "mongoose": "^4.8.5",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1"
   },
   "devDependencies": {},
   "scripts": {
-	"test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "start": "node server.js"
   },
   "author": "Zico Deng",
   "license": "ISC"

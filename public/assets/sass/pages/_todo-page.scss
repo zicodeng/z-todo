@@ -1,0 +1,70 @@
+.add-item {
+	@extend %right-half;
+	@include respond-to($breakpoint-tablet) {
+		footer {
+			display: none;
+		}
+	};
+}
+
+.display-list {
+	@extend %left-half;
+	
+	footer {
+		display: none;
+	}
+
+	@include respond-to($breakpoint-tablet) {
+		height: auto;
+
+		footer {
+			display: block;
+		}
+	};
+
+	h1 {
+		font-size: $base-font-size * 2;
+		margin: 0 0 20px 0;
+	}
+
+	ul {
+		height: 90%;
+		overflow-y: auto;
+
+		@include respond-to($breakpoint-tablet) {
+			overflow-y: visible;
+		};
+	}
+
+	li {
+		color: $facebook-blue;
+		background-color: white;
+		padding: 20px;
+		margin: 10px 20%;
+		border-left: 10px solid #00A350;
+		cursor: pointer;
+		position: relative;
+		@include transition(all 0.3s ease-in-out);
+		@include respond-to($breakpoint-mobile) {
+			margin: 10px 10%;
+		};
+
+		&:hover {
+			border-left: 10px solid $alert-red;
+
+			span {
+				opacity: 1;
+			}
+		}
+
+		span {
+			background-color: $alert-red;
+			padding: 20px;
+			width: 100%;
+			color: white;
+			opacity: 0;
+			@include transition(all 0.3s ease-in-out);
+			@include abs-pos(0, 0, auto, auto);
+		}
+	}
+}

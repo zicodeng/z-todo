@@ -1,0 +1,16 @@
+footer {
+	position: absolute;
+	left: 50%;
+	bottom: 20px;
+	margin-left: -125px;
+}
+
+footer > span::before {
+	content: "\f004";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #ED1C24;
+	margin: 0 2px;
+}

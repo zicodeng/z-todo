@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 
-var toDoController = require("./controllers/z-todo-controller");
+var todoController = require("./controllers/todo-controller");
 
 // Set up template engine
 app.set("view engine", "ejs");
@@ -10,13 +10,13 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 // set the home page route
-app.get('/', function(req, res) {
+app.get('/', function(request, response) {
     // ejs render automatically looks in the views folder
-    res.render('index');
+    response.render('index');
 });
 
 // Fire controllers
-toDoController(app);
+todoController(app);
 
 // Listen to port
 app.listen(process.env.PORT || 3000, () => {
