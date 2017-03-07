@@ -52,7 +52,7 @@ form.material-design {
 			@include input-placeholder {
 				color: $facebook-blue;
 				font-size: 14px;
-				transform: translateY(-20px);
+				@include transform(translateY(-20px));
 				@include transition(all 0.3s ease-in-out);
 			};
 		}

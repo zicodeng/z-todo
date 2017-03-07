@@ -192,6 +192,7 @@ form.material-design input:focus {
 form.material-design input:focus:-moz-placeholder {
   color: #3B5998;
   font-size: 14px;
+  -moz-transform: translateY(-20px);
   transform: translateY(-20px);
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -199,6 +200,7 @@ form.material-design input:focus:-moz-placeholder {
 form.material-design input:focus::-moz-placeholder {
   color: #3B5998;
   font-size: 14px;
+  -moz-transform: translateY(-20px);
   transform: translateY(-20px);
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -206,12 +208,14 @@ form.material-design input:focus::-moz-placeholder {
 form.material-design input:focus:-ms-input-placeholder {
   color: #3B5998;
   font-size: 14px;
+  -ms-transform: translateY(-20px);
   transform: translateY(-20px);
   transition: all 0.3s ease-in-out;
 }
 form.material-design input:focus::-webkit-input-placeholder {
   color: #3B5998;
   font-size: 14px;
+  -webkit-transform: translateY(-20px);
   transform: translateY(-20px);
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
