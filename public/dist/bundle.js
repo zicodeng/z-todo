@@ -9226,12 +9226,12 @@ var Todo = function (_React$Component) {
 		}
 	}, {
 		key: "deleteItem",
-		value: function deleteItem(item) {
+		value: function deleteItem(itemId) {
 			var _this5 = this;
 
 			$.ajax({
 				type: "DELETE",
-				url: "/todo/" + item
+				url: "/todo/" + itemId
 			}).done(function (data) {
 				// update todoList and re-render the page
 				_this5.loadList();
@@ -19565,8 +19565,10 @@ var AddItemForm = function (_React$Component) {
 			// Clear input field
 			this.refs.item.value = null;
 
-			// Pass user input value
-			this.props.addItem(item);
+			if (item !== null) {
+				// Pass user input value
+				this.props.addItem(item);
+			}
 		}
 	}]);
 
@@ -19628,7 +19630,7 @@ var DisplayList = function (_React$Component) {
 					this.props.todoList.map(function (item, uid) {
 						return _react2.default.createElement(
 							"li",
-							{ key: uid, id: item.item, onClick: function onClick(e) {
+							{ key: uid, id: item._id, onClick: function onClick(e) {
 									return _this2.handleClickDelete(e);
 								} },
 							_react2.default.createElement(
@@ -19658,13 +19660,11 @@ var DisplayList = function (_React$Component) {
 		key: "handleClickDelete",
 		value: function handleClickDelete(e) {
 			e.preventDefault();
-			var item = e.currentTarget.id;
 
-			// Replace any space with hypen
-			// e.g. make bed => make-bed
-			var deletedItem = item.replace(/ /g, "-");
+			// Delete item based on its id
+			var itemId = e.currentTarget.id;
 
-			this.props.deleteItem(deletedItem);
+			this.props.deleteItem(itemId);
 		}
 	}]);
 

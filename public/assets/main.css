@@ -249,6 +249,7 @@ form.material-design button:hover {
 @media screen and (max-width: 768px) {
   .display-list {
     height: auto;
+    padding: 50px 0 100px 0;
   }
   .display-list footer {
     display: block;

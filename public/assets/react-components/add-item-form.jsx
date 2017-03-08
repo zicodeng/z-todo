@@ -31,8 +31,10 @@ class AddItemForm extends React.Component {
 		// Clear input field
 		this.refs.item.value = null;
 
-		// Pass user input value
-		this.props.addItem(item);
+		if(item !== null) {
+			// Pass user input value
+			this.props.addItem(item);
+		}
 	}
 }
 

@@ -51,10 +51,10 @@ module.exports = function(app) {
 	});
 
 	// Delete an item from MongoDB
-	app.delete("/todo/:item", function(request, response) {
+	app.delete("/todo/:itemId", function(request, response) {
 
 		// Find the item deleted by user and then remove it in our MongoDB
-		todoModel.find({item: request.params.item.replace(/\-/g, " ")}).remove(function(error, data) {
+		todoModel.find({_id: request.params.itemId}).remove(function(error, data) {
 			if (error) {
 				throw error;
 			} else {

@@ -9,13 +9,14 @@
 
 .display-list {
 	@extend %left-half;
-	
+
 	footer {
 		display: none;
 	}
 
 	@include respond-to($breakpoint-tablet) {
 		height: auto;
+		padding: 50px 0 100px 0;
 
 		footer {
 			display: block;

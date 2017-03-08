@@ -66,10 +66,10 @@ class Todo extends React.Component {
 		});
 	}
 
-	deleteItem(item) {
+	deleteItem(itemId) {
 		$.ajax({
             type: "DELETE",
-            url: "/todo/" + item
+            url: "/todo/" + itemId
         })
 		.done((data) => {
 			// update todoList and re-render the page

@@ -9,7 +9,7 @@ class DisplayList extends React.Component {
 					{
 						this.props.todoList.map((item, uid) => {
 							return (
-								<li key={uid} id={item.item} onClick={(e) => this.handleClickDelete(e)}>
+								<li key={uid} id={item._id} onClick={(e) => this.handleClickDelete(e)}>
 									<span>DELETE <i className="fa fa-trash-o" aria-hidden="true"></i></span>
 									<p>{item.item}</p>
 								</li>
@@ -24,13 +24,11 @@ class DisplayList extends React.Component {
 
 	handleClickDelete(e) {
 		e.preventDefault();
-		var item = e.currentTarget.id;
 
-		// Replace any space with hypen
-        // e.g. make bed => make-bed
-		var deletedItem = item.replace(/ /g, "-");
+		// Delete item based on its id
+		var itemId = e.currentTarget.id;
 
-		this.props.deleteItem(deletedItem);
+		this.props.deleteItem(itemId);
 	}
 }
 
