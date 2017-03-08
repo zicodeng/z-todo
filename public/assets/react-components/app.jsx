@@ -2,8 +2,7 @@
 window.$ = $;
 import $ from "jquery";
 
-// Include CSS file
-// require("../main.css");
+require("../js/common.js");
 
 import React from 'react';
 import ReactDOM from 'react-dom';
