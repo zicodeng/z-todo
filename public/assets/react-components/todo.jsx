@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DisplayList from "./display-list";
 import AddItemForm from "./add-item-form";
+import DisplayList from "./display-list";
 
 class Todo extends React.Component {
 	constructor(props) {
@@ -27,19 +27,20 @@ class Todo extends React.Component {
 	}
 
 	loadList() {
-		var url = "/todo/api";
-        fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((json) => {
+		// Use jQuery AJAX
+		$.ajax({
+			type: 'GET',
+			url: '/todo/api',
+			dataType: "json"
+		})
+		.done((data) => {
 			this.setState({
-				todoList: json.todoList,
+				todoList: data.todoList,
 			});
-        })
-        .catch((error) => {
+		})
+		.fail((error) => {
 			console.log(error);
-        });
+		});
     }
 
 	addItem(item) {
