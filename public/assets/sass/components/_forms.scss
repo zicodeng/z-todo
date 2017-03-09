@@ -12,7 +12,8 @@ form.material-design {
 		padding-bottom: 40px;
 	};
 
-	h1 {
+	> h1 {
+		font-family: $base-title-font-family;
 		font-size: $base-font-size * 2;
 		background: $facebook-blue;
 		color: white;
@@ -24,41 +25,7 @@ form.material-design {
 		};
 	}
 
-	input {
-		margin: 40px 30px;
-		width: 400px;
-		display: block;
-		border: none;
-		padding: 10px 0;
-		border-bottom: solid 1px $facebook-blue;
-		background: linear-gradient(to bottom, white 96%, $facebook-blue 4%);
-		background-position: -400px 0;
-		background-size: 400px 100%;
-		background-repeat: no-repeat;
-		color: darken($facebook-blue, 20%);
-		@include transition(all 0.3s cubic-bezier(.64, .09, .08, 1));
-
-		@include respond-to($breakpoint-tablet) {
-			width: 260px;
-			background-position: -260px 0;
-			background-size: 260px 100%;
-		};
-
-		&:focus {
-			box-shadow: none;
-			outline: none;
-			background-position: 0 0;
-
-			@include input-placeholder {
-				color: $facebook-blue;
-				font-size: 14px;
-				@include transform(translateY(-20px));
-				@include transition(all 0.3s ease-in-out);
-			};
-		}
-	}
-
-	button {
+	> button {
 	  border: none;
 	  background: #ddd;
 	  cursor: pointer;
@@ -72,5 +39,47 @@ form.material-design {
 	  &:hover {
 		  background: $facebook-blue;
 	  }
+	}
+}
+
+.form-group {
+	position: relative;
+	margin: 50px 30px;
+
+	> input {
+		width: 100%;
+		display: block;
+		border: none;
+		border-bottom: solid 1.5px $facebook-blue;
+		padding: 5px 0;
+		background: linear-gradient(to bottom, white 96%, $facebook-blue 4%);
+		background-position: -400px 0;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		// @include transition(all 0.3s cubic-bezier(.64, .09, .08, 1));
+
+		@include respond-to($breakpoint-tablet) {
+			width: 260px;
+			background-position: -260px 0;
+			background-size: 260px 100%;
+		};
+
+		&:focus, &:valid {
+			box-shadow: none;
+			outline: none;
+
+			+ label {
+				color: $facebook-blue;
+				font-size: 14px;
+				@include transform(translateY(-20px));
+			};
+		}
+	}
+
+	> label {
+		color: #ddd;
+		z-index: -1;
+		@include abs-pos(0, auto, auto, 0);
+		@include transition(all 0.3s ease-in-out);
 	}
 }

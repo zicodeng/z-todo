@@ -75,7 +75,7 @@ html {
 }
 
 body {
-  font-family: "ubuntu", sans-serif;
+  font-family: "roboto", sans-serif;
   font-size: 18px;
 }
 
@@ -148,79 +148,20 @@ form.material-design {
     padding-bottom: 40px;
   }
 }
-form.material-design h1 {
+form.material-design > h1 {
+  font-family: "ubuntu", sans-serif;
   font-size: 36px;
   background: #3B5998;
   color: white;
   padding: 50px 0;
 }
 @media screen and (max-width: 768px) {
-  form.material-design h1 {
+  form.material-design > h1 {
     font-size: 27px;
     padding: 40px 0;
   }
 }
-form.material-design input {
-  margin: 40px 30px;
-  width: 400px;
-  display: block;
-  border: none;
-  padding: 10px 0;
-  border-bottom: solid 1px #3B5998;
-  background: linear-gradient(to bottom, #ffffff 96%, #3b5998 4%);
-  background-position: -400px 0;
-  background-size: 400px 100%;
-  background-repeat: no-repeat;
-  color: #1e2e4f;
-  -moz-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  -o-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-}
-@media screen and (max-width: 768px) {
-  form.material-design input {
-    width: 260px;
-    background-position: -260px 0;
-    background-size: 260px 100%;
-  }
-}
-form.material-design input:focus {
-  box-shadow: none;
-  outline: none;
-  background-position: 0 0;
-}
-form.material-design input:focus:-moz-placeholder {
-  color: #3B5998;
-  font-size: 14px;
-  -moz-transform: translateY(-20px);
-  transform: translateY(-20px);
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-form.material-design input:focus::-moz-placeholder {
-  color: #3B5998;
-  font-size: 14px;
-  -moz-transform: translateY(-20px);
-  transform: translateY(-20px);
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-form.material-design input:focus:-ms-input-placeholder {
-  color: #3B5998;
-  font-size: 14px;
-  -ms-transform: translateY(-20px);
-  transform: translateY(-20px);
-  transition: all 0.3s ease-in-out;
-}
-form.material-design input:focus::-webkit-input-placeholder {
-  color: #3B5998;
-  font-size: 14px;
-  -webkit-transform: translateY(-20px);
-  transform: translateY(-20px);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-form.material-design button {
+form.material-design > button {
   border: none;
   background: #ddd;
   cursor: pointer;
@@ -233,8 +174,56 @@ form.material-design button {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-form.material-design button:hover {
+form.material-design > button:hover {
   background: #3B5998;
+}
+
+.form-group {
+  position: relative;
+  margin: 50px 30px;
+}
+.form-group > input {
+  width: 100%;
+  display: block;
+  border: none;
+  border-bottom: solid 1.5px #3B5998;
+  padding: 5px 0;
+  background: linear-gradient(to bottom, #ffffff 96%, #3b5998 4%);
+  background-position: -400px 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 768px) {
+  .form-group > input {
+    width: 260px;
+    background-position: -260px 0;
+    background-size: 260px 100%;
+  }
+}
+.form-group > input:focus, .form-group > input:valid {
+  box-shadow: none;
+  outline: none;
+}
+.form-group > input:focus + label, .form-group > input:valid + label {
+  color: #3B5998;
+  font-size: 14px;
+  -moz-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+.form-group > label {
+  color: #ddd;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
@@ -256,8 +245,9 @@ form.material-design button:hover {
   }
 }
 .display-list h1 {
+  font-family: "ubuntu", sans-serif;
   font-size: 36px;
-  margin: 0 0 20px 0;
+  margin: 0 0 30px 0;
 }
 .display-list ul {
   height: 90%;
@@ -289,12 +279,12 @@ form.material-design button:hover {
 .display-list li:hover {
   border-left: 10px solid #A40000;
 }
-.display-list li:hover span {
+.display-list li:hover > div {
   opacity: 1;
 }
-.display-list li span {
+.display-list li > div {
   background-color: #A40000;
-  padding: 20px;
+  height: 100%;
   width: 100%;
   color: white;
   opacity: 0;
@@ -308,9 +298,24 @@ form.material-design button:hover {
   bottom: auto;
   left: auto;
 }
+.display-list li > div > p {
+  width: 90px;
+  margin-left: -45px;
+  height: 1rem;
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
 section.app-title h1 {
   font-size: 500px;
+  font-family: "ubuntu", sans-serif;
 }
 @media screen and (max-width: 768px) {
   section.app-title h1 {
@@ -320,6 +325,7 @@ section.app-title h1 {
 section.app-title h2 {
   font-size: 100px;
   margin-top: -50px;
+  font-family: "ubuntu", sans-serif;
 }
 @media screen and (max-width: 768px) {
   section.app-title h2 {

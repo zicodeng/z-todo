@@ -14,8 +14,11 @@ class AddItemForm extends React.Component {
 			<section className="add-item">
 				<form className="material-design" onSubmit={(e) => this.handleSubmitForm(e)}>
 					<h1>Z-TODO</h1>
-					<input type="text" ref="item" placeholder="What's the plan for today?" required />
-					<button type="submit">Add</button>
+					<div className="form-group">
+						<input type="text" ref="item" required />
+						<label for="new-item">What's the plan for today?</label>
+					</div>
+					<button type="submit">ADD</button>
 				</form>
 				<footer>Created with <span></span> by Zico Deng</footer>
 			</section>

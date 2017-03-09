@@ -10,7 +10,9 @@ class DisplayList extends React.Component {
 						this.props.todoList.map((item, uid) => {
 							return (
 								<li key={uid} id={item._id} onClick={(e) => this.handleClickDelete(e)}>
-									<span>DELETE <i className="fa fa-trash-o" aria-hidden="true"></i></span>
+									<div class="delete">
+										<p>DELETE <i className="fa fa-trash-o" aria-hidden="true"></i></p>
+									</div>
 									<p>{item.item}</p>
 								</li>
 							)
