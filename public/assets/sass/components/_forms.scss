@@ -65,7 +65,9 @@ form.material-design {
 		};
 
 		&:focus, &:valid {
+			// Remove border default outline
 			box-shadow: none;
+			-webkit-appearance: none;
 			outline: none;
 
 			+ label {
