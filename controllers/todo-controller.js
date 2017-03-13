@@ -1,65 +1,81 @@
 var bodyParser = require("body-parser");
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-var mongoose = require("mongoose");
-
-// Connect to MongoDB database
-mongoose.connect("mongodb://zicodeng:zicodeng@ds113670.mlab.com:13670/heroku_z3mzm8z0");
-
-// Create a schema (blueprint for data), so our database knows what kind of information it is getting
-var todoSchema = new mongoose.Schema({
-	item: String
-});
-
-// Create a database model
-// P1: model name which will be stored in MongoDB
-// P2: schema name the MongoDB will be using
-var todoModel = mongoose.model("todo-list", todoSchema);
+var userModel = require("../models/user-model");
 
 module.exports = function(app) {
 	// Get data from MongoDB and send JSON to front-end
-	app.get("/todo/api", function(request, response) {
+	// Only retrieve data that belong to that specific user
+	app.get("/todo/user/:username/api", function(request, response) {
 
-		// Find method can find all items or particular items in that collection
-		// If an empty object is passed as parameter, it will retrieve all the items in that collection
-		todoModel.find({}, function(error, data) {
+		// Get username so we need which user is sending the request
+		var username = request.params.username;
+		console.log(username + " is logged in");
+
+		// Only find data that belong to that specific user
+		userModel.findOne({username: username}, function(error, data) {
 			if(error) {
 				throw error;
 			} else {
-			    response.json({todoList: data});
+
+				// Respond front-end with selected data (we don't want to send password to front-end)
+				var user = {
+					firstName: data.firstName,
+					lastName: data.lastName,
+					username: data.username,
+					todoList: data.todoList
+				}
+			    response.json({json: user});
 			}
 		});
 	});
 
-	app.get("/todo", function(request, response) {
-		// Respond with a view (z-todo.ejs)
-		response.render("todo");
-	});
-
 	// Get data from the view and update it to our database
-	app.post("/todo", urlencodedParser, function(request, response) {
+	app.post("/todo/user/:username/api", urlencodedParser, function(request, response) {
+		// Get username so we know which user is sending the request
+		var username = request.params.username;
 
-		// Pass the new item from request (client) to our MongoDB model
-		var newTodoItem = todoModel(request.body, todoSchema).save(function(error, data) {
-			if (error) {
-				throw error;
+		// Get data in the request
+		// Construct a new object to store data in the request
+		var newItem = {
+			item: request.body.item,
+			uid: request.body.uid
+		}
+
+		// Use MongoDB $push method to add a new item to todoList array
+		var updateList = {
+			$push: {
+				todoList: newItem
+			}
+		};
+
+		// Find the specific document (record) based on username
+		userModel.update({username: username}, updateList, function(error, data) {
+			if(error) {
+				console.log(error);
 			} else {
-			    // Respond with updated data
-			    response.json(data);
+				response.json({json: data})
 			}
 		});
 	});
 
 	// Delete an item from MongoDB
-	app.delete("/todo/:itemId", function(request, response) {
+	app.post("/todo/user/:username/api/:itemId", function(request, response) {
+		console.log(request.params.itemId);
+		// Use MongoDB $pull method to delete an item in todoList array
+		// $pull means remove an item from a specific array based on query
+		var updateList = {
+			$pull: {
+				todoList: {uid: request.params.itemId}
+			}
+		};
 
-		// Find the item deleted by user and then remove it in our MongoDB
-		todoModel.find({_id: request.params.itemId}).remove(function(error, data) {
-			if (error) {
-				throw error;
+		// Find the specific document (record) based on username
+		userModel.update({username: request.params.username}, updateList, function(error, data) {
+			if(error) {
+				console.log(error);
 			} else {
-			    // Respond with updated data
-			    response.json(data);
+				response.json({json: data})
 			}
 		});
 	});

@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ReactDOM from "react-dom";
 
 import AddItemForm from "./add-item-form";
 import DisplayList from "./display-list";
@@ -7,7 +8,7 @@ class Todo extends React.Component {
 	constructor(props) {
         super(props);
 
-		this.loadList();
+		this.loadPage();
 
         this.state = ({
 			todoList: [],
@@ -17,7 +18,11 @@ class Todo extends React.Component {
 	render() {
 		return (
 			<div>
-				<AddItemForm addItem={(item) => this.addItem(item)} />
+				<AddItemForm
+					addItem={(item) => this.addItem(item)}
+					firstName={this.state.firstName}
+					lastName={this.state.lastName}
+				/>
 				<DisplayList
 					todoList={this.state.todoList}
 					deleteItem={(item) => this.deleteItem(item)}
@@ -26,16 +31,47 @@ class Todo extends React.Component {
 		)
 	}
 
-	loadList() {
-		// Use jQuery AJAX
+	loadPage() {
 		$.ajax({
-			type: 'GET',
-			url: '/todo/api',
+			type: "GET",
+			url: "/todo"
+		})
+		.done((response) => {
+			this.getUser();
+		})
+		.fail((error) => {
+			console.log(error);
+		});
+	}
+
+	getUser() {
+		$.ajax({
+			type: "GET",
+			url: "/todo/user"
+		})
+		.done((response) => {
+			this.setState({
+				username: response.username
+			});
+			this.loadList();
+		})
+		.fail((error) => {
+			console.log(error);
+		});
+	}
+
+	loadList() {
+		var username = this.state.username;
+		$.ajax({
+			type: "GET",
+			url: "/todo/user/" + username + "/api",
 			dataType: "json"
 		})
-		.done((data) => {
+		.done((response) => {
 			this.setState({
-				todoList: data.todoList,
+				todoList: response.json.todoList,
+				firstName: response.json.firstName,
+				lastName: response.json.lastName
 			});
 		})
 		.fail((error) => {
@@ -44,20 +80,22 @@ class Todo extends React.Component {
     }
 
 	addItem(item) {
+		// Use timestamp as unique id
+		var date = new Date();
+		var uid = date.getTime()
+
 		var newItem = {
-			item: item
-		};
+			item: item,
+			uid: uid
+		}
 
-		var todoList = this.state.todoList;
-		todoList.push(newItem);
-
-		// Use jQuery AJAX
 		$.ajax({
-			type: 'POST',
-			url: '/todo',
+			type: "POST",
+			url: "/todo/user/" + this.state.username + "/api",
 			data: newItem
 		})
 		.done((data) => {
+			// Load page again
 			// update todoList and re-render the page
 			this.loadList();
 		})
@@ -68,10 +106,11 @@ class Todo extends React.Component {
 
 	deleteItem(itemId) {
 		$.ajax({
-            type: "DELETE",
-            url: "/todo/" + itemId
+            type: "POST",
+            url: "/todo/user/" + this.state.username + "/api/" + itemId
         })
 		.done((data) => {
+			// Load page again
 			// update todoList and re-render the page
 			this.loadList();
 		})
@@ -80,5 +119,7 @@ class Todo extends React.Component {
 		});
 	}
 }
+
+ReactDOM.render(<Todo />, document.getElementById("todo"));
 
 export default Todo;

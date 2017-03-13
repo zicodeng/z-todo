@@ -22,6 +22,30 @@ section.app-title {
 	}
 }
 
+%switch-state {
+	> p {
+		cursor: pointer;
+		&:hover {
+			color: $facebook-blue;
+		}
+	}
+}
+
 .log-in {
 	@extend %right-half;
+	@extend %switch-state;
+}
+
+.sign-up {
+	@extend %right-half;
+	@extend %switch-state;
+	> form {
+		margin: 0 auto 30px;
+	}
+}
+
+.index-error {
+	position: fixed;
+	top: 50%;
+	left: 50%;
 }

@@ -3,11 +3,14 @@ var path = require("path");
 
 var config = {
 	context: __dirname,
-    entry: "./public/assets/react-components/app.jsx",
+    entry: {
+		index: "./public/assets/react-components/index.jsx",
+		todo: "./public/assets/react-components/todo.jsx"
+	},
 
     output: {
         path: path.join(__dirname, "/public/dist"),
-        filename: 'bundle.js'
+        filename: "[name]-bundle.js"
     },
 
 	watch: true,
@@ -30,14 +33,19 @@ var config = {
     },
 
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx", ".css"]
     },
 
 	plugins: [
 		new webpack.DefinePlugin({
-			'process.env': {
-				'NODE_ENV': JSON.stringify('production')
+			"process.env": {
+				"NODE_ENV": JSON.stringify("production")
 			}
+		}),
+		// Make jQuery accessible to every React component
+		new webpack.ProvidePlugin({
+			$: "jquery",
+			jQuery: "jquery"
 		})
 	]
 };
