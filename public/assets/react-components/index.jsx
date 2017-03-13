@@ -69,7 +69,7 @@ class Index extends React.Component {
 			console.log(response);
 			// If log in successfully, redirect to what server wants us to go (todo page)
 			if (typeof response.redirect === "string") {
-				window.location = response.redirect;
+				window.location.href = response.redirect;
 			} else {
 				window.alert(response.error);
 			}

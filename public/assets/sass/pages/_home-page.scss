@@ -28,6 +28,10 @@ section.app-title {
 		&:hover {
 			color: $facebook-blue;
 		}
+
+		@include respond-to($breakpoint-tablet) {
+			margin-bottom: 30px;
+		};
 	}
 }
 

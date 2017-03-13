@@ -58,7 +58,7 @@ form.material-design {
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 
-		// Remove border default outline
+		// Remove input default outline
 		box-shadow: none;
 		-webkit-appearance: none;
 		outline: none;
@@ -72,6 +72,9 @@ form.material-design {
 		};
 
 		&:focus, &:valid {
+			box-shadow: none;
+			-webkit-appearance: none;
+			outline: none;
 
 			+ label {
 				color: $facebook-blue;

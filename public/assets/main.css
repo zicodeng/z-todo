@@ -207,6 +207,11 @@ form.material-design > button:hover {
     background-size: 240px 100%;
   }
 }
+.form-group > input:focus, .form-group > input:valid {
+  box-shadow: none;
+  -webkit-appearance: none;
+  outline: none;
+}
 .form-group > input:focus + label, .form-group > input:valid + label {
   color: #3B5998;
   font-size: 14px;
@@ -360,6 +365,11 @@ section.app-title h2 {
 }
 .log-in > p:hover, .sign-up > p:hover {
   color: #3B5998;
+}
+@media screen and (max-width: 768px) {
+  .log-in > p, .sign-up > p {
+    margin-bottom: 30px;
+  }
 }
 
 .sign-up > form {
