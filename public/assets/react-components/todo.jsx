@@ -34,19 +34,6 @@ class Todo extends React.Component {
 	loadPage() {
 		$.ajax({
 			type: "GET",
-			url: "/todo"
-		})
-		.done((response) => {
-			this.getUser();
-		})
-		.fail((error) => {
-			console.log(error);
-		});
-	}
-
-	getUser() {
-		$.ajax({
-			type: "GET",
 			url: "/todo/user"
 		})
 		.done((response) => {
@@ -68,6 +55,7 @@ class Todo extends React.Component {
 			dataType: "json"
 		})
 		.done((response) => {
+			console.log(response.json);
 			this.setState({
 				todoList: response.json.todoList,
 				firstName: response.json.firstName,

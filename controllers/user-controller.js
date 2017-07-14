@@ -9,18 +9,6 @@ var userModel = require("../models/user-model");
 module.exports = function(app) {
 	app.use(session({secret: "asdDFGfsdSFDGfgvw345435623sdfaA2G", resave: false, saveUninitialized: true}));
 
-	app.get("/todo", function(request, response) {
-		// Check if session has the user object
-		if(!request.session.user) {
-			// If not, send error message
-			response.render("index");
-		} else {
-			// If yes, render todo page
-			var username = request.session.user.username;
-			response.render("todo");
-		}
-	});
-
 	app.get("/todo/user", function(request, response) {
 		// Check if session has the user object
 		if(!request.session.user) {
@@ -92,6 +80,8 @@ module.exports = function(app) {
 			} else {
 				// If user found in our database, store its info in session
 				request.session.user = user;
+
+				console.log(request.session.user);
 
 				// Route has to be dynamic
 				// It is changing based on which user is logged in

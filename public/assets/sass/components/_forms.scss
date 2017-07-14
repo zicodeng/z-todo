@@ -58,12 +58,6 @@ form.material-design {
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 
-		// Remove input default outline
-		// box-shadow: none;
-		// -webkit-appearance: none;
-		// -webkit-border-radius: 0px;
-		// outline: none;
-
 		// @include transition(all 0.3s cubic-bezier(.64, .09, .08, 1));
 
 		@include respond-to($breakpoint-tablet) {
@@ -73,10 +67,6 @@ form.material-design {
 		};
 
 		&:focus, &:valid {
-			// box-shadow: none;
-			// -webkit-appearance: none;
-			// -webkit-border-radius: 0px;
-			// outline: none;
 
 			+ label {
 				color: $facebook-blue;
